@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/png" href="media/icons/favicon-puzzle-64.png" />
+    <link rel="stylesheet" href="style.css">
+    <title>Trusty Power Tools Tasks</title>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <!-- Background Image -->
+        <div class="title">Interactive Solution Map</div>
+        <canvas id="graph" width="450px" height="250px"></canvas>
+
+        <!-- Task 1 Choices -->
+        <div class="category" id="category-0">
+            <div class="select-element-cat" id="select-element-cat-0" style="top: 30px;
+            left: 30px;"><span class="cat-title"></span>
+            </div>
+            <div class="select-element" id="select-element-0" onclick="selectHandler(event)" style="top: 70px;
+            left: 30px;">Identify Gap
+            </div>
+        </div>
+        <div class="category hide" id="category-1">
+            <div class="select-element-cat" id="select-element-cat-1" style="top: 30px;
+            left: 120px;"><span class="cat-title">Cause of Problem</span>
+            </div>
+            <div class="select-element" id="select-element-1" onclick="selectHandler(event)" style="top: 70px;
+            left: 120px;">System
+            </div>
+            <div class="select-element" id="select-element-2" onclick="selectHandler(event)" style="top: 110px;
+            left: 120px;">Internal
+            </div>
+        </div>
+
+        <div class="category hide" id="category-2">
+            <div class="select-element-cat" id="select-element-cat-2" style="top: 70px;
+            left: 210px;"><span class="cat-title">Source of Internal Problems</span>
+            </div>
+            <div class="select-element" id="select-element-3" onclick="selectHandler(event)" style="top: 110px;
+            left: 210px;">Ability
+            </div>
+            <div class="select-element" id="select-element-4" onclick="selectHandler(event)" style="top: 150px;
+            left: 210px;">Effort
+            </div>
+        </div>
+
+        <div class="category hide" id="category-3">
+            <div class="select-element-cat" id="select-element-cat-3" style="top: 70px;
+            left: 300px;"><span class="cat-title">Source of Ability Problems</span>
+            </div>
+            <div class="select-element" id="select-element-5" onclick="selectHandler(event)" style="top: 110px;
+            left: 300px;">Human Capital
+            </div>
+            <div class="select-element" id="select-element-6" onclick="selectHandler(event)" style="top: 150px;
+            left: 300px;">Social Capital
+            </div>
+            <div class="select-element" id="select-element-7" onclick="selectHandler(event)" style="top: 190px;
+            left: 300px;">Base Capital
+            </div>
+        </div>
+        <div class="category hide" id="category-4">
+            <div class="select-element-cat" id="select-element-cat-4" style="top: 110px;
+            left: 300px;"><span class="cat-title">Source of Effort Problems</span>
+            </div>
+            <div class="select-element" id="select-element-8" onclick="selectHandler(event)" style="top: 150px;
+            left: 300px;">Needs
+            </div>
+            <div class="select-element" id="select-element-9" onclick="selectHandler(event)" style="top: 190px;
+            left: 300px;">Equity
+            </div>
+            <div class="select-element" id="select-element-10" onclick="selectHandler(event)" style="top: 230px;
+            left: 300px;">E ➜ P<br>Expectancy
+            </div>
+            <div class="select-element" id="select-element-11" onclick="selectHandler(event)" style="top: 270px;
+            left: 300px;">P ➜ O<br>Expectancy
+            </div>
+        </div>
+        <div class="category hide" id="category-5">
+            <div class="select-element-cat" id="select-element-cat-5" style="top: 110px;
+            left: 390px;"><span class="cat-title">Employee Needs</span>
+            </div>
+            <div class="select-element" id="select-element-12" onclick="selectHandler(event)" style="top: 150px;
+            left: 390px;">Intrinsic
+            </div>
+            <div class="select-element" id="select-element-13" onclick="selectHandler(event)" style="top: 190px;
+            left: 390px;">Extrinsic
+            </div>
+        </div>
+
+        <!-- Tool list -->
+        <!-- System tools -->
+        <div class="toolcat hide" id="toolcat-0" style="top: 55px;
+        left: 210px;">
+            <div class="select-tool-cat" id="select-tool-cat-0">
+                <span class="toolcat-title">System Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-0" onclick="toolHandler(event)">
+                - Change System</div>
+        </div>
+
+        <!-- Human Capital tools -->
+        <div class="toolcat hide" id="toolcat-1" style="top: 95px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-1">
+                <span class="toolcat-title">Human Capital Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-1" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Train/Develop (T)</div>
+            <div class="select-tool" id="select-tool-2" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Mentor/Apprentice (P)</div>
+        </div>
+
+        <!-- Social Capital tools -->
+        <div class="toolcat hide" id="toolcat-2" style="top: 135px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-2">
+                <span class="toolcat-title">Social Capital Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-3" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Mentor/Coach (P)</div>
+            <div class="select-tool" id="select-tool-4" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Incentives (T)</div>
+            <div class="select-tool" id="select-tool-5" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Counsel (P)</div>
+        </div>
+
+        <!-- Base Capital tools -->
+        <div class="toolcat hide" id="toolcat-3" style="top: 175px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-3">
+                <span class="toolcat-title">Base Capital Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-6" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Development (P)</div>
+            <div class="select-tool" id="select-tool-7" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Transfer (T)</div>
+            <div class="select-tool" id="select-tool-8" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Fire (T)</div>
+        </div>
+
+
+        <!-- Intrinsic tools -->
+        <div class="toolcat hide" id="toolcat-4" style="top: 135px;
+        left: 480px;">
+            <div class="select-tool-cat" id="select-tool-cat-4">
+                <span class="toolcat-title">Intrinsic Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-9" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Recognition (P)</div>
+            <div class="select-tool" id="select-tool-10" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Enrigh Job (P)</div>
+            <div class="select-tool" id="select-tool-11" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Create Teams (P)</div>
+        </div>
+
+        <!-- Extrinsic tools -->
+        <div class="toolcat hide" id="toolcat-5" style="top: 175px;
+        left: 480px;">
+            <div class="select-tool-cat" id="select-tool-cat-5">
+                <span class="toolcat-title">Extrinsic Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-12" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Direct Control (T)</div>
+            <div class="select-tool" id="select-tool-13" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Rules and Procedures (T)</div>
+            <div class="select-tool" id="select-tool-14" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Measure and Appraise (T)</div>
+            <div class="select-tool" id="select-tool-15" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Reward and Incentives (T)</div>
+        </div>
+
+        <!-- Equity Capital tools -->
+        <div class="toolcat hide" id="toolcat-6" style="top: 175px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-6">
+                <span class="toolcat-title">Equity Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-16" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Change Comparison (P)</div>
+            <div class="select-tool" id="select-tool-17" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Change Perception (P)</div>
+            <div class="select-tool" id="select-tool-18" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Change Outcomes (T)</div>
+            <div class="select-tool" id="select-tool-19" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Change Inputs (T)</div>
+        </div>
+
+        <!-- E ➜ P Expectancy Capital tools -->
+        <div class="toolcat hide" id="toolcat-7" style="top: 215px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-7">
+                <span class="toolcat-title">E ➜ P Expectancy Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-20" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Counsel (P)</div>
+            <div class="select-tool" id="select-tool-21" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Train/Develop (T)</div>
+            <div class="select-tool" id="select-tool-22" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Increase Resources (T)</div>
+            <div class="select-tool" id="select-tool-23" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Mentor/Coach (P)</div>
+        </div>
+
+        <!-- P ➜ O Expectancy Capital tools -->
+        <div class="toolcat hide" id="toolcat-8" style="top: 255px;
+        left: 390px;">
+            <div class="select-tool-cat" id="select-tool-cat-8">
+                <span class="toolcat-title">P ➜ O Expectancy Tools:
+                </span>
+            </div>
+            <br>
+            <div class="select-tool" id="select-tool-24" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Change Rewards (T)</div>
+            <div class="select-tool" id="select-tool-25" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Create Incentives (T)</div>
+            <div class="select-tool" id="select-tool-26" onclick="toolHandler(event)" style="color: rgb(2, 2, 173)">
+                - Publish Performance (T)</div>
+            <div class="select-tool" id="select-tool-27" onclick="toolHandler(event)" style="color:rgb(255, 81, 0)">
+                - Change Perception (P)</div>
+        </div>
+
+        <!-- Tool legend  -->
+        <div class="legend" id="legend">
+            <span style="color: rgb(2, 2, 173)">T = Task-focused tool</span>
+            <span style="color: rgb(255, 81, 0)">P = People-focused tool</span>
+        </div>
+
+
+        <!-- Description -->
+        <div class="description-title" id="description-title">Analyze the problem</div>
+        <div class="description" id="description"></div>
+
+        <!-- Instructions -->
+        <div class="instruction" id="instruction">
+            <div class="instruction-title" id="instruction-title">
+                Interactive Solution Map Instructions
+            </div>
+            <div class="instruction-content" id="instruction-content">
+                <br><br>
+                Begin by clicking on the box labeled Identify Gap in the top part of the screen. As you click on each
+                box at the top, explanatory text will appear in the box at the bottom of the screen. Your path through
+                this interactive solutions map will be identified by a red line and an arrow.
+                <br><br>
+                When you reach the end of a path, you will see several performance-enhancement tools from which to
+                choose. Click on a tool for a short explanation of when the tool may be appropriate and then click on
+                the button labeled "Implementation Choices" for more information on how to implement that tool.
+                <br><br>
+                You may click on the Identify Gap button to go back to the beginning at any time, you may click on any
+                other box to "back up" a few levels or see other choices at the same level.
+            </div>
+            <!-- Close Button -->
+            <button id="inst-close-btn" class="close-btn" style="bottom: 20px;">CLOSE</button>
+        </div>
+        <button class="instruction-btn" id="instruction-btn">INSTRUCTIONS</button>
+
+        <!-- Tool Description -->
+        <div class="explanation hide" id="explanation">
+            <div class="explanation-box" id="explanation-box">
+                <p id="explanation-content">
+                </p>
+                <button id="expl-btn" class="expl-btn">Implementation<br>Choices</button>
+                <button id="tool-close-btn" class="close-btn" style="top: 10px; right: 10px;">CLOSE</button>
+            </div>
+        </div>
+
+        <!-- Implementations -->
+        <div class="implementation hide" id="implementation">
+            <div class="implementation-title" id="implementation-title">
+                IMPLEMENTATIONS
+            </div>
+            <div class="implementation-content" id="implementation-content">
+            </div>
+            <!-- Next Button -->
+            <button id="imple-close-btn" class="close-btn" style="bottom: 20px;">CLOSE</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
